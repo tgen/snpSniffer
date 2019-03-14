@@ -1,0 +1,11 @@
+BASEDIR=$(dirname $0)
+REFERENCE=$1
+BAM=$2
+NAME=`echo $BAM|awk -F'/' '{print $NF}'|awk -F'.bam' '{print $1}'`
+LEN=`echo $BAM|awk -F'/' '{print $NF}'|awk '{print length}'`
+DIR=`echo $BAM|awk -v LEN=${LEN} '{print substr($0,1,length-LEN)}'`
+#echo $BAM $NAME ${P}
+#samtools mpileup -f <ref.fa> -l <PositionsToGenotype> -cg <alignment.bam> >genotypes.bcf
+#bcftools view genotypes.bcf -g > genotypes.vcf
+
+samtools mpileup -f ${REFERENCE} -d 5000 -M 256 -l ${BASEDIR}/positions_387_hg19.txt -g ${BAM} |bcftools view - -g > ${DIR}${NAME}_flt.vcf
