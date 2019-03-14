@@ -10,7 +10,7 @@ DIR=`echo $BAM|awk -v LEN=${LEN} '{print substr($0,1,length-LEN)}'`
 # Load bcftools, which is located in the samtools module
 module load samtools/1.9
 
-# Genotype the 387 test positions across the genome
+# Genotype the 387 test positions across the genome, filter to calls with DP >= 5
 bcftools mpileup \
     --no-BAQ \
     --max-depth 5000 \
@@ -22,6 +22,22 @@ bcftools mpileup \
     | \
     bcftools call \
     --threads 4 \
-    --multiallelic-caller \
+    --consensus-caller \
+    | \
+    bcftools sort \
+    | \
+    bcftools filter \
+    --include 'DP>=5' \
     --output-type u \
-    --output ${DIR}${NAME}.snpsniffer.vcf
+    --output ${DIR}temp.snpsniffer.vcf
+
+# The database file cannot contain chr1, I suspect the java app expects a single character string
+# So the output vcf needs to be edited to remove the chr from the contig names
+
+# Extract the header
+grep "#" ${DIR}temp.snpsniffer.vcf > temp.snpsniffer.header
+grep -v "#" ${DIR}temp.snpsniffer.vcf | sed 's/chr//g' > temp.snpsniffer.calls
+cat temp.snpsniffer.header temp.snpsniffer.calls > ${DIR}${NAME}.snpsniffer.vcf
+
+# Cleanup directory
+rm temp.snpsniffer.*
