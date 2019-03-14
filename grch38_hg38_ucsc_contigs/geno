@@ -1,11 +1,27 @@
+#!/usr/bin/env bash
+
 BASEDIR=$(dirname $0)
 REFERENCE=$1
 BAM=$2
 NAME=`echo $BAM|awk -F'/' '{print $NF}'|awk -F'.bam' '{print $1}'`
 LEN=`echo $BAM|awk -F'/' '{print $NF}'|awk '{print length}'`
 DIR=`echo $BAM|awk -v LEN=${LEN} '{print substr($0,1,length-LEN)}'`
-#echo $BAM $NAME ${P}
-#samtools mpileup -f <ref.fa> -l <PositionsToGenotype> -cg <alignment.bam> >genotypes.bcf
-#bcftools view genotypes.bcf -g > genotypes.vcf
 
-samtools mpileup -f ${REFERENCE} -d 5000 -M 256 -l ${BASEDIR}/positions_387_hg19.txt -g ${BAM} |bcftools view - -g > ${DIR}${NAME}_flt.vcf
+# Load bcftools, which is located in the samtools module
+module load samtools/1.9
+
+# Genotype the 387 test positions across the genome
+bcftools mpileup \
+    --no-BAQ \
+    --max-depth 5000 \
+    --min-MQ 0 \
+    --min-BQ 13 \
+    --fasta-ref ${REFERENCE} \
+    --regions-file ${BASEDIR}/positions_387_hg38_ucsc.txt \
+    ${BAM} \
+    | \
+    bcftools call \
+    --threads 4 \
+    --multiallelic-caller \
+    --output-type u \
+    --output ${DIR}${NAME}.snpsniffer.vcf
