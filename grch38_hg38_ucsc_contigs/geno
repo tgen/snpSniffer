@@ -4,8 +4,6 @@ BASEDIR=$(dirname $0)
 REFERENCE=$1
 BAM=$2
 NAME=`echo $BAM|awk -F'/' '{print $NF}'|awk -F'.bam' '{print $1}'`
-LEN=`echo $BAM|awk -F'/' '{print $NF}'|awk '{print length}'`
-DIR=`echo $BAM|awk -v LEN=${LEN} '{print substr($0,1,length-LEN)}'`
 
 # Load bcftools, which is located in the samtools module
 module load samtools/1.9
@@ -23,21 +21,21 @@ bcftools mpileup \
     bcftools call \
     --threads 4 \
     --consensus-caller \
-    | \
-    bcftools sort \
-    | \
-    bcftools filter \
-    --include 'DP>=5' \
-    --output-type u \
-    --output ${DIR}temp.snpsniffer.vcf
+    --output-type b \
+    --output temp.snpsniffer.unsorted.bcf
+
+bcftools sort \
+    --output-type v \
+    --output temp.snpsniffer.sorted.vcf \
+    temp.snpsniffer.unsorted.bcf
 
 # The database file cannot contain chr1, I suspect the java app expects a single character string
 # So the output vcf needs to be edited to remove the chr from the contig names
 
 # Extract the header
-grep "#" ${DIR}temp.snpsniffer.vcf > temp.snpsniffer.header
-grep -v "#" ${DIR}temp.snpsniffer.vcf | sed 's/chr//g' > temp.snpsniffer.calls
-cat temp.snpsniffer.header temp.snpsniffer.calls > ${DIR}${NAME}.snpsniffer.vcf
+grep "#" temp.snpsniffer.sorted.vcf > temp.snpsniffer.header
+grep -v "#" temp.snpsniffer.sorted.vcf | sed 's/chr//g' > temp.snpsniffer.calls
+cat temp.snpsniffer.header temp.snpsniffer.calls > ${NAME}.snpsniffer.vcf
 
 # Cleanup directory
 rm temp.snpsniffer.*
