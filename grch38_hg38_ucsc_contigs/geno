@@ -21,13 +21,10 @@ bcftools mpileup \
     bcftools call \
     --threads 4 \
     --consensus-caller \
-    --output-type b \
-    --output temp.snpsniffer.unsorted.bcf
-
-bcftools sort \
+    | \
+    bcftools sort \
     --output-type v \
-    --output temp.snpsniffer.sorted.vcf \
-    temp.snpsniffer.unsorted.bcf
+    --output-file temp.snpsniffer.sorted.vcf
 
 # The database file cannot contain chr1, I suspect the java app expects a single character string
 # So the output vcf needs to be edited to remove the chr from the contig names
