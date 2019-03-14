@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
+## Usage: geno <reference.fasta> <input.bam>
+## Requirement: bcftools v1.0 or later must be in your $PATH
+## Final files will be written to the directory from which the script is initiated
+
 BASEDIR=$(dirname $0)
 REFERENCE=$1
 BAM=$2
 NAME=`echo $BAM|awk -F'/' '{print $NF}'|awk -F'.bam' '{print $1}'`
-
-# Load bcftools, which is located in the samtools module
-module load samtools/1.9
 
 # Genotype the 387 test positions across the genome, filter to calls with DP >= 5
 bcftools mpileup \
