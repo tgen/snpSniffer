@@ -7,3 +7,5 @@ It also supports the usage of updated variant calling using samtools v1.9 or lat
     * Partially deleted in new:
         * chr1:206760685-206760686
 * Because the database MUST be 387 variants we need to add one additional variant
+    * Added the following for testing (May Update):
+        * chr22 32491163
