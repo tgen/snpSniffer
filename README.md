@@ -4,8 +4,18 @@ Tool for checking genotype concordance between multiple assays
 
 This tools was developed by Venkata "Teja" Yellapantulla as part of his PhD thesis work in the Keats Lab at Translational Genomics Research Institute.
 
+This tool was updated to enhance functionality by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Not all snpSniffer features have been re-tested. Please submit a bug report if you find an issue.
+
 
 ## Usage
+- To generate a custom .ini file
+Use a text editor to format a blank file as below (or see included .ini files for examples). Ensure files have Unix style line endings (run dos2unix to convert DOS-style line endings to Unix style):
+
+Sample
+<chromosome>:<position index>
+<chromosome>:<position index>
+...
+<chromosome>:<position index>
 
 - To generate genotypes from a bam:
 java -jar snpSniffer.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
@@ -33,15 +43,16 @@ java -jar snpSniffer.jar -help
 
 
 ## Example usage
+1) Generate the custom .ini flat file, or use one of the provided files
 
-1) Generate the genotypes in a vcf format at specific genomic loci:
+2) Generate the genotypes in a vcf format at specific genomic loci:
     java -jar ~/local/bin/snpSniffer.jar -genotype /lustre/vyellapa/reference.fa /lustre/vyellapa/sample1.bam
 
-2) Adding the genotypes generated to a flat file "database.ini," provided
+3) Adding the genotypes generated to a flat file "database.ini," provided
     Step 1, will generate a vcf having the same name as the bam in the same directory, this will be added to database.ini with same name:
     java -jar ~/local/bin/snpSniffer.jar -add /lustre/vyellapa/sample1.vcf /lustre/vyellapa/database.ini
 
-3) Compare the genotypes for samples of interest(after 2 or more vcf's are added), examine the snpSniffer output and infer if any mixups occurred:
+4) Compare the genotypes for samples of interest(after 2 or more vcf's are added), examine the snpSniffer output and infer if any mixups occurred:
     java -jar ~/local/bin/snpSniffer.jar -check sample1 /lustre/vyellapa/database.ini
 
 
@@ -68,7 +79,7 @@ Run_SnpSniffer.sh (Included)
 SnpSniffer_Graph.R (Included)
 R
 GGPLOT2 Library
-
+Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 
 ### USAGE:
 
@@ -88,3 +99,7 @@ GGPLOT2 Library
 	Graphs are created in triplicate to filter for number of possible matches
 		100 and 50 should be considered high confidence
 		20 are often still valuable but can have false positives
+		
+### UPDATE NOTES:
+
+20190611 - Substituted ad-hoc array dimension generation for previously, hard-coded values. You can view the original source for the .jar in the src directory on GitHub. Please note that the source was decompiled using Procyon decompiler, as original .java files were not immediately available. New source files have the internal V6-modified file name suffix; however, due to not wanting to tool with re-writing the wrapper, I have left the .jar as V5. Much thanks to the Procyon team. Special thanks to Dr. Nieves Perdigones for her assistance in helping to build out a tool .ini for the canine model. Thank you also to Natalia Briones for her assistance in configuration and troubleshooting. End update notes 20190611
