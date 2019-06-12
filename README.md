@@ -12,10 +12,7 @@ This tool was updated to enhance functionality by Salvatore Facista (TGen - Lab 
 Use a text editor to format a blank file as below (or see included .ini files for examples). Ensure files have Unix style line endings (run dos2unix to convert DOS-style line endings to Unix style):
 
 Sample
-<chromosome>:<position index>
-<chromosome>:<position index>
-...
-<chromosome>:<position index>
+<br>&lt;chromosome&gt;:&lt;position index&gt;</br>
 
 - To generate genotypes from a bam:
 java -jar snpSniffer.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
