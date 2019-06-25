@@ -8,7 +8,7 @@ This tool was updated to enhance functionality by Salvatore Facista (TGen - Lab 
 
 
 ## Usage
-- Move the configuration (.txt "reference" file & .ini "flat" file) into the same directory as snpSnifferV5.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths appropriately. This will be added to the bugs list.
+- Move the configuration (.txt "reference" file, .ini "flat" file, and "geno" file) into the same directory as snpSnifferV5.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths appropriately. This will be added to the bugs list.
 
 - To generate a custom .ini file
 Use a text editor to format a blank file as below (or see included .ini files for examples). Ensure files have Unix style line endings (run dos2unix to convert DOS-style line endings to Unix style):
@@ -19,6 +19,9 @@ Sample
 - To generate a custom "reference" file users will need the same information as the .ini file. The format for the file is slightly different. Ensure files have Unix style line endings (run dos2unix to convert DOS-style line endings to Unix style):
 <br>&lt;chromosome&gt;	&lt;position index&gt;</br>
 Note: The tab character separates the chromosome and position index. See example .txt files in the package for more information.
+
+- To edit "geno" file so that it functions with the custom reference file you created
+Edit the file name in "geno" with your favourite text editor. Ensure it resides within the same directory as the .jar file.
 
 - To generate genotypes from a bam:
 java -jar snpSnifferV5.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
