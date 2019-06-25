@@ -8,7 +8,7 @@ This tool was updated to enhance functionality by Salvatore Facista (TGen - Lab 
 
 
 ## Usage
-- Move the configuration (.txt "reference" file, .ini "flat" file, and "geno" file) into the same directory as snpSnifferV5.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths appropriately. This will be added to the bugs list.
+- Move the configuration (.txt "reference" file, .ini "flat" file, and "geno" file) into the same directory as snpSnifferV5.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths. This will be added to the bugs list.
 
 - To generate a custom .ini file
 Use a text editor to format a blank file as below (or see included .ini files for examples). Ensure files have Unix style line endings (run dos2unix to convert DOS-style line endings to Unix style):
