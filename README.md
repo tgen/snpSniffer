@@ -24,45 +24,52 @@ Note: The tab character separates the chromosome and position index. See example
 Edit the file name in "geno" with your favourite text editor. Ensure it resides within the same directory as the .jar file.
 
 - To generate genotypes from a bam:
+
 java -jar snpSnifferV5.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
         Alternately, genotypes can be generated using:
 	
 	Note: To clarfiy, snpSnifferV5.jar -genotype simply initiates a BASH script that is located in the "geno" file.
 	Users may find it easier to run these commands without the script utilizing the SamTools utility.
 
-geno <fullFilePath/reference> <fullFilePath/BAM>
+		java -jar snpSniffer.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
+	
+  Alternately, genotypes can be generated using:
+
+		geno <fullFilePath/reference> <fullFilePath/BAM>
 
  *Users should make sure bam is indexed
 
 - To add genotypes from a vcf:
 
-java -jar snpSnifferV5.jar -add <fullFilePath/VCF fileName> <fullFilePath/database.ini>
+`java -jar snpSnifferV5.jar -add <fullFilePath/VCF fileName> <fullFilePath/database.ini>`
 
 - To view all samples:
 
-java -jar snpSnifferV5.jar -check Samples <fullFilePath/database.ini>
+`java -jar snpSnifferV5.jar -check Samples <fullFilePath/database.ini>`
 
 - To check concordance of genotypes for a sample:
 
-java -jar snpSnifferV5.jar -check <sampleName> <fullFilePath/database.ini>
+`java -jar snpSnifferV5.jar -check <sampleName> <fullFilePath/database.ini>`
 
 - For help:
 
-java -jar snpSnifferV5.jar -help
+`java -jar snpSnifferV5.jar -help`
+
 
 
 ## Example usage
 1) Generate the custom .ini flat file, or use one of the provided files. snpSniffer does not do this for you. The flat file is just a modified text file. Ensure you have Unix-style line endings by using dos2unix if you are generating the .ini file on a non-Unix system.
 
+
 2) Generate the genotypes in a vcf format at specific genomic loci:
-    java -jar ~/local/bin/snpSnifferV5.jar -genotype /lustre/vyellapa/reference.fa /lustre/vyellapa/sample1.bam
+    `java -jar ~/local/bin/snpSnifferV5.jar -genotype /lustre/vyellapa/reference.fa /lustre/vyellapa/sample1.bam`
 
 3) Adding the genotypes generated to a flat file "database.ini," provided
     Step 1, will generate a vcf having the same name as the bam in the same directory, this will be added to database.ini with same name:
-    java -jar ~/local/bin/snpSnifferV5.jar -add /lustre/vyellapa/sample1.vcf /lustre/vyellapa/database.ini
+    `java -jar ~/local/bin/snpSnifferV5.jar -add /lustre/vyellapa/sample1.vcf /lustre/vyellapa/database.ini`
 
 4) Compare the genotypes for samples of interest(after 2 or more vcf's are added), examine the snpSniffer output and infer if any mixups occurred:
-    java -jar ~/local/bin/snpSnifferV5.jar -check sample1 /lustre/vyellapa/database.ini
+    `java -jar ~/local/bin/snpSnifferV5.jar -check sample1 /lustre/vyellapa/database.ini`
 
 Note: Users need to reference the correct directory when attempting to run snpSnifferV5.jar . Your version of snpSnifferV5.jar may reside in a different directory than the example above. 
 
@@ -72,10 +79,11 @@ Step 3 above should generate lines of output, depending on number of samples, si
 
 In the output given below, sample1 and sample2 have a ratio of ~0.98 suggesting both sequences come from the same individual. However, sample1 and sample3 have have a ratio of ~0.32 suggesting that the sequences do not come from the same individual.
 
+```
 sample1 & sample2 count=171.0 match=169.0 ratio=0.9883040935672515
 
 sample1 & sample3 count=325.0 match=107.0 ratio=0.3292307692307692
-
+```
 
 ### SnpSniffer Wrapper Usage Notes
 
@@ -94,9 +102,11 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 ### USAGE:
 
 1) Update the absolute paths for the VARIABLES in Run_SnpSniffer.sh
+```
 	EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5.ini
 	SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
 	SnpSniffer_Graph_R=/data/jkeats/scripts/SnpSniffer_Graph.R
+```
 
 2) Execute the wrapper <./Run_SnpSniffer.sh>
 
