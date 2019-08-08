@@ -9,11 +9,11 @@
 #
 #################################
 
-USER=`whoami`
-
-EMPTY_DATABASE=/home/${USER}/snpSniffer/databaseV5.ini
-SNP_SNIFFER_JAR=/home/${USER}/snpSniffer/snpSnifferV5.jar
-SnpSniffer_Graph_R=/home/${USER}/snpSniffer/SnpSniffer_Graph.R
+## we could make \$DIR_INSTALL and \$EMPTY_DATABASE variables two arguments to the current scripts instead
+DIR_INSTALL=/home/clegendre/tools/snpSniffer_v2.0.0/ 
+EMPTY_DATABASE=${DIR_INSTALL}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
+SNP_SNIFFER_JAR=${DIR_INSTALL}/snpSnifferV5.jar
+SnpSniffer_Graph_R=${DIR_INSTALL}/SnpSniffer_Graph.R
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
 #SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
