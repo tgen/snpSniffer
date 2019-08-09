@@ -9,15 +9,44 @@
 #
 #################################
 
-USER=`whoami`
+function usage(){
+  echo -e "\n$0 \$DIR_INSTALL_SNPSNIFFER  \$FULL_PATH_TO_EMPTY_DATABASE"
+  
+  echo -e "\twhere DIR_INSTALL_SNPSNIFFER is actually the FULL path where you cloned the tool"
+  echo -e "\twhere FULL_PATH_TO_EMPTY_DATABASE is actually the FULL path to an original DB. 
+  example: \${DIR_INSTALL_SNPSNIFFER}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini "
+  echo -e "\n"
+}
 
-EMPTY_DATABASE=/home/${USER}/snpSniffer/databaseV5.ini
-SNP_SNIFFER_JAR=/home/${USER}/snpSniffer/snpSnifferV5.jar
-SnpSniffer_Graph_R=/home/${USER}/snpSniffer/SnpSniffer_Graph.R
+if [[ $# -ne 2 ]]
+then
+  echo -e "Expected 2 arguments, found $#" ; usage ; exit 1
+fi
+
+#DIR_INSTALL=/home/$(whoami)/tools/snpSniffer_v2.0.0/ 
+DIR_INSTALL_SNPSNIFFER=$1
+
+#EMPTY_DATABASE=${DIR_INSTALL_SNPSNIFFER}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
+EMPTY_DATABASE=$2
+SNP_SNIFFER_JAR=${DIR_INSTALL_SNPSNIFFER}/snpSnifferV5.jar
+SnpSniffer_Graph_R=${DIR_INSTALL}/SnpSniffer_Graph.R
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
 #SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
 #SnpSniffer_Graph_R=/data/jkeats/scripts/SnpSniffer_Graph.R
+
+## check args
+if [[ ${DIR_INSTALL_SNPSNIFFER} == "" || ! -e ${DIR_INSTALL_SNPSNIFFER} ]] ; 
+then
+  echo -e "ERROR: INVALID DIR_INSTALL PATH ; Check your input; Aborting."
+  exit 1
+fi
+if [[ ${EMPTY_DATABASE} == "" || ! -e ${EMPTY_DATABASE} ]] ; 
+then
+  echo -e "ERROR: INVALID \$EMPTY_DATABASE==${EMPTY_DATABASE} ; Check your input; Aborting"
+  exit 1
+fi
+
 
 ##################################
 #
@@ -47,7 +76,7 @@ cat ${EMPTY_DATABASE} > SnpSniffer_DB.ini
 # Find all the pre-calculated genotype results
 
 find . -name "*flt.vcf" > Temp_SnpSniffer_Genotype_Paths.txt
-find . -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
+find . -name "*snpsniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
 
 # Add genotypes to the database
 
