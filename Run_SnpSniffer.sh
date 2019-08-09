@@ -9,15 +9,44 @@
 #
 #################################
 
-## we could make \$DIR_INSTALL and \$EMPTY_DATABASE variables two arguments to the current scripts instead
-DIR_INSTALL=/home/clegendre/tools/snpSniffer_v2.0.0/ 
-EMPTY_DATABASE=${DIR_INSTALL}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
-SNP_SNIFFER_JAR=${DIR_INSTALL}/snpSnifferV5.jar
+function usage(){
+  echo -e "\n$0 \$DIR_INSTALL_SNPSNIFFER  \$FULL_PATH_TO_EMPTY_DATABASE"
+  
+  echo -e "\twhere DIR_INSTALL_SNPSNIFFER is actually the FULL path where you cloned the tool"
+  echo -e "\twhere FULL_PATH_TO_EMPTY_DATABASE is actually the FULL path to an original DB. 
+  example: \${DIR_INSTALL_SNPSNIFFER}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini "
+  echo -e "\n"
+}
+
+if [[ $# -ne 2 ]]
+then
+  echo -e "Expected 2 arguments, found $#" ; usage ; exit 1
+fi
+
+#DIR_INSTALL=/home/$(whoami)/tools/snpSniffer_v2.0.0/ 
+DIR_INSTALL_SNPSNIFFER=$1
+
+#EMPTY_DATABASE=${DIR_INSTALL_SNPSNIFFER}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
+EMPTY_DATABASE=$2
+SNP_SNIFFER_JAR=${DIR_INSTALL_SNPSNIFFER}/snpSnifferV5.jar
 SnpSniffer_Graph_R=${DIR_INSTALL}/SnpSniffer_Graph.R
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
 #SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
 #SnpSniffer_Graph_R=/data/jkeats/scripts/SnpSniffer_Graph.R
+
+## check args
+if [[ ${DIR_INSTALL_SNPSNIFFER} == "" || ! -e ${DIR_INSTALL_SNPSNIFFER} ]] ; 
+then
+  echo -e "ERROR: INVALID DIR_INSTALL PATH ; Check your input; Aborting."
+  exit 1
+fi
+if [[ ${EMPTY_DATABASE} == "" || ! -e ${EMPTY_DATABASE} ]] ; 
+then
+  echo -e "ERROR: INVALID \$EMPTY_DATABASE==${EMPTY_DATABASE} ; Check your input; Aborting"
+  exit 1
+fi
+
 
 ##################################
 #
