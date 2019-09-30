@@ -31,11 +31,11 @@ public class CountLines
       }
       catch (FileNotFoundException exception)
       {
-         System.out.println("The specified file was not found");
+         System.out.println("CountLines.java method error: The specified file was not found");
       }
       catch (IOException exception)
       {
-         System.out.println("Problem reading in the file");
+         System.out.println("CountLines.java method error: Problem reading in the file");
       }
            
    }
@@ -43,7 +43,7 @@ public class CountLines
    public int showCount()
    {
       int theCount = lineCounter;
-      System.out.println(theCount);
+      System.out.println(theCount + " lines detected in reference file.");
       return theCount;
    }
    
