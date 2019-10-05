@@ -47,11 +47,7 @@ public class notExpectedV6
             this.l = this.line1.split(this.delim).length;
             ++this.i;
         }
-        CountLines poot = new CountLines();
-         poot.readInAndCount(s);
-         final int ARRAYSIZE = poot.showCount();
-
-        
+                
         scanner.close();
         this.i = 0;
         while (this.i < this.l) {
@@ -60,6 +56,11 @@ public class notExpectedV6
             }
             ++this.i;
         }
+        //here we count the lines in the reference file
+        CountLines poot = new CountLines();
+        poot.readInAndCount(s3);
+        final int ARRAYSIZE = poot.showCount();
+        
         final String[][] array = new String[ARRAYSIZE][this.l];
         final Scanner scanner2 = new Scanner(new FileReader("snpSniffer_output.txt"));
         while (scanner2.hasNextLine()) {

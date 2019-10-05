@@ -119,7 +119,7 @@ public class CheckV6
         }
          //here we get the size required for the array
         CountLines poot = new CountLines();
-        poot.readInAndCount(s);
+        poot.readInAndCount(s2);
         final int ARRAYSIZE = poot.showCount();
 
         final String[][] array = new String[ARRAYSIZE][this.l];

@@ -75,7 +75,7 @@ Note: Users need to reference the correct directory when attempting to run snpSn
 
 ## Example output
 
-Step 3 above should generate lines of output, depending on number of samples, similar to the one below. It shows that between sample1 and sample2, 171 genotypes were obtained with good quality out of which 169 positions match. The "ratio" field is the ratio of match to count and ratio>0.8 signifies that the two samples match.
+Step (4) above should generate lines of output, depending on number of samples, similar to the one below. It shows that between sample1 and sample2, 171 genotypes were obtained with good quality out of which 169 positions match. The "ratio" field is the ratio of match to count and ratio>0.8 signifies that the two samples match.
 
 In the output given below, sample1 and sample2 have a ratio of ~0.98 suggesting both sequences come from the same individual. However, sample1 and sample3 have have a ratio of ~0.32 suggesting that the sequences do not come from the same individual.
 
@@ -121,6 +121,8 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 		20 are often still valuable but can have false positives
 		
 ### UPDATE NOTES:
+
+20190930 - Fixed improper parameter reference in expectedV6.java. Cleaned up the expected/ notExpectedV6.java files so that they look more similar. Added more verbose error messages in countLines.java. Repackaged .jar. Overwrote old .java & .class files with the updated ones (as a whole). End notes 20190630
 
 20190611 - Substituted ad-hoc array dimension generation for previously, hard-coded values. You can view the original source for the .jar in the src directory on GitHub. Please note that the source was decompiled using Procyon decompiler, as original .java files were not immediately available. New source files have the internal V6-modified file name suffix; however, due to not wanting to tool with re-writing the wrapper, I have left the .jar as V5. Much thanks to the Procyon team. Special thanks to Dr. Nieves Perdigones for her assistance in helping to build out a tool .ini for the canine model. Thank you also to Natalia Briones for her assistance in configuration and troubleshooting. End update notes 20190611
 

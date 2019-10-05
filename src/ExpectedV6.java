@@ -35,7 +35,10 @@ public class ExpectedV6
     }
     
     void Run(final String s, final String s2, final String s3) throws IOException {
-        final File file = new File("snpSniffer_output.txt");
+    	
+    	
+       
+    	final File file = new File("snpSniffer_output.txt");
         if (file.exists() && !file.isDirectory()) {
             file.delete();
         }
@@ -48,6 +51,7 @@ public class ExpectedV6
             ++this.i;
         }
         scanner.close();
+       
         this.i = 0;
         while (this.i < this.l) {
             if (!this.line1Tokens[this.i].equals("Sample")) {
@@ -56,10 +60,9 @@ public class ExpectedV6
             ++this.i;
         }
          //here we get the size required for the array
-         CountLines poot = new CountLines();
-         poot.readInAndCount(s);
-         final int ARRAYSIZE = poot.showCount();
-        
+        CountLines poot = new CountLines();
+        poot.readInAndCount(s3);
+        final int ARRAYSIZE = poot.showCount(); 
         final String[][] array = new String[ARRAYSIZE][this.l];
         final Scanner scanner2 = new Scanner(new FileReader("snpSniffer_output.txt"));
         while (scanner2.hasNextLine()) {
