@@ -77,6 +77,7 @@ cat ${EMPTY_DATABASE} > SnpSniffer_DB.ini
 
 find . -name "*flt.vcf" > Temp_SnpSniffer_Genotype_Paths.txt
 find . -name "*snpsniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
+find . -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
 
 # Add genotypes to the database
 
