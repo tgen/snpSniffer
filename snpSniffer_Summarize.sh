@@ -117,3 +117,5 @@ Rscript --vanilla ${SNP_SNIFFER_GRAPH} \
 
 # Remove unneeded files
 rm SnpSniffer_AllPairs_Results.txt
+rm Temp1_HetRate_Results.txt
+rm Temp2_HetRate_Results.txt

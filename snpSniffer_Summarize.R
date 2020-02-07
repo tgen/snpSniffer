@@ -86,6 +86,9 @@ het_data <- het_data %>%
                               TRUE ~ "Other")) %>% 
   select(-c(Study, Patient, Visit, Source, Fraction, Increment))
 
+# Save summarized het table
+write_tsv(het_data, "SnpSniffer_HetRate_Summary.tsv")
+
 ###################################
 ##  Define Graph Functions
 ###################################
@@ -156,7 +159,7 @@ genotypes_assayType_Plot <- function(data, output_name) {
   ggplot(data, aes(Assay, Total)) + 
     geom_boxplot(outlier.shape = NA, size = 1 ) + 
     geom_jitter(color = "black", width = 0.365) + 
-    geom_hline(yintercept = 382, color = "red", linetype = "dashed") +
+    geom_hline(yintercept = 387, color = "red", linetype = "dashed") +
     scale_y_continuous(name = "Total Genotypes", breaks = c(seq(0,400,25))) + 
     xlab(label = "Assay") + 
     theme(axis.text = element_text(size=12), 
