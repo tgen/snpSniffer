@@ -55,7 +55,11 @@ find . -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
 # Add genotypes to the database
 for line in `cat Temp_SnpSniffer_Genotype_Paths.txt`
 do
-  java -jar ${SNP_SNIFFER_JAR} -add ${line} SnpSniffer_DB.ini
+  #Test code to remove when jar file error is fixed for dealing with homo-ref input to database
+  VCF=`basename ${line}`
+  awk '{OFS="\t" ; if($10 == "0/0:0") {print $1, $2, $3, $4, $5, $6, $7, $8, $9, "0"} else{print $0}}' ${line} > ${VCF}
+  java -jar ${SNP_SNIFFER_JAR} -add ${VCF} SnpSniffer_DB.ini
+  rm ${VCF}
 done
 
 # Cleanup the temp file
@@ -119,3 +123,15 @@ Rscript --vanilla ${SNP_SNIFFER_GRAPH} \
 rm SnpSniffer_AllPairs_Results.txt
 rm Temp1_HetRate_Results.txt
 rm Temp2_HetRate_Results.txt
+
+exit 1
+
+bcftools filter --include 'GT="RR"' --output-type v MMRF_2952_1_PB_WBC_C2_KHWGS.bwa.bam.snpSniffer.vcf | sed 's/:PL//g' | sed 's/0\/0:0/0/g' | bcftools view --output-type z --output-file Temp_HomoRef.vcf.gz -
+bcftools index Temp_HomoRef.vcf.gz
+bcftools filter --exclude 'GT="RR"' --output-type z --output Temp_AltContaining.vcf.gz MMRF_2952_1_PB_WBC_C2_KHWGS.bwa.bam.snpSniffer.vcf
+bcftools index Temp_AltContaining.vcf.gz
+bcftools concat --output-type v Temp_AltContaining.vcf.gz Temp_HomoRef.vcf.gz > corrected.vcf
+bcftools concat --output-type v -a Temp_AltContaining.vcf.gz Temp_HomoRef.vcf.gz | bcftools sort - > corrected.vcf
+
+awk '{if($10 == "0/0:0") {print $1, $2, $3, $4, $5, $6, $7, $8, $9, "0"} else{print $0}}' MMRF_2952_1_PB_WBC_C2_KHWGS.bwa.bam.snpSniffer.vcf
+awk '{OFS="\t" ; if($10 == "0/0:0") {print $1, $2, $3, $4, $5, $6, $7, $8, $9, "0"} else{print $0}}' MMRF_2952_1_PB_WBC_C2_KHWGS.bwa.bam.snpSniffer.vcf > MMRF_2952_1_PB_WBC_C2_TEST.bwa.bam.snpSniffer.vcf
