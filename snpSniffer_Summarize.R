@@ -76,7 +76,7 @@ write_tsv(all_pairs, "SnpSniffer_AllPairs_Summary.tsv")
 
 
 ### Import heterozygous rate data table
-het_data <- read_tsv(opt$pair_file, col_names = c("Sample", "Homozygous", "Heterozygous", "Total", "Het_Ratio"))
+het_data <- read_tsv(opt$het_file, col_names = c("Sample", "Homozygous", "Heterozygous", "Total", "Het_Ratio"))
 
 # Add columns to summarize by Assay and Subgroup
 het_data <- het_data %>% 
