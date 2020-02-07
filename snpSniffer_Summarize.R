@@ -11,12 +11,12 @@ option_list = list(
               default=NULL,
               help="Pairwise Comparison File from snpSniffer",
               metavar="filename"),
-  make_option(c("-h", "--het_file"),
+  make_option(c("-f", "--het_file"),
               type="character",
               default=NULL,
               help="Heterozygous Summary File from snpSniffer",
               metavar="filename")
-);
+  );
 
 opt_parser = OptionParser(option_list=option_list);
 opt = parse_args(opt_parser);
