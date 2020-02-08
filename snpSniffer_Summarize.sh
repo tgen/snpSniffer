@@ -119,7 +119,7 @@ awk 'NR>2' Temp1_HetRate_Results.txt \
 ###############################################
 
 Rscript --vanilla ${SNP_SNIFFER_GRAPH} \
-  --pair_file SnpSniffer_AllPairs_Results.txt \
+  --comp_file SnpSniffer_AllPairs_Results.txt \
   --het_file Temp2_HetRate_Results.txt
 
 # Remove unneeded files
