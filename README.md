@@ -4,7 +4,7 @@ Tool for checking genotype concordance between multiple assays
 
 This tools was developed by Venkata "Teja" Yellapantulla as part of his PhD thesis work in the Keats Lab at Translational Genomics Research Institute.
 
-This tool was updated to enhance functionality by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Not all snpSniffer features have been re-tested. Please submit a bug report if you find an issue.
+This tool is maintained by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Please submit bug reports via Github.
 
 
 ## Usage
@@ -121,6 +121,8 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 		20 are often still valuable but can have false positives
 		
 ### UPDATE NOTES:
+
+20200214 - Changed main class name to exclude version number. Added more verbose main method argument error message. Added -version option. Changed the Genotype class to recognize the format "0/0" as a homozygous reference. Previously, "0" was expected for homozygous reference. Renamed internal classes to exclude version number.
 
 20190930 - Fixed improper parameter reference in expectedV6.java. Cleaned up the expected/ notExpectedV6.java files so that they look more similar. Added more verbose error messages in countLines.java. Repackaged .jar. Overwrote old .java & .class files with the updated ones (as a whole). End notes 20190630
 
