@@ -12,11 +12,11 @@
 USER=`whoami`
 
 EMPTY_DATABASE=/home/${USER}/snpSniffer/databaseV5.ini
-SNP_SNIFFER_JAR=/home/${USER}/snpSniffer/snpSnifferV5.jar
+SNP_SNIFFER_JAR=/home/${USER}/snpSniffer/snpSniffer.jar
 SnpSniffer_Graph_R=/home/${USER}/snpSniffer/SnpSniffer_Graph.R
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
-#SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
+#SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSniffer.jar
 #SnpSniffer_Graph_R=/data/jkeats/scripts/SnpSniffer_Graph.R
 
 ##################################
