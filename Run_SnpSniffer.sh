@@ -30,7 +30,6 @@ DIR_INSTALL_SNPSNIFFER=$1
 EMPTY_DATABASE=$2
 SNP_SNIFFER_JAR=${DIR_INSTALL_SNPSNIFFER}/snpSniffer.jar
 SnpSniffer_Graph_R=${DIR_INSTALL_SNPSNIFFER}/SnpSniffer_Graph.R
->>>>>>> 6e1a4882b027357bf82451cad9884aa1efc4df8d
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
 #SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSniffer.jar
