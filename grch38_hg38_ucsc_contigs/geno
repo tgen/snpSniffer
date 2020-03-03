@@ -22,18 +22,19 @@ bcftools mpileup \
     bcftools call \
     --threads 4 \
     --consensus-caller \
+    --skip-variants indels \
     | \
     bcftools sort \
     --output-type v \
-    --output-file temp.snpsniffer.sorted.vcf
+    --output-file temp_${NAME}.snpsniffer.sorted.vcf
 
 # The database file cannot contain chr1, I suspect the java app expects a single character string
 # So the output vcf needs to be edited to remove the chr from the contig names
 
 # Extract the header
-grep "#" temp.snpsniffer.sorted.vcf > temp.snpsniffer.header
-grep -v "#" temp.snpsniffer.sorted.vcf | sed 's/chr//g' > temp.snpsniffer.calls
-cat temp.snpsniffer.header temp.snpsniffer.calls > ${NAME}.snpsniffer.vcf
+grep "#" temp_${NAME}.snpsniffer.sorted.vcf > temp_${NAME}.snpsniffer.header
+grep -v "#" temp_${NAME}.snpsniffer.sorted.vcf | sed 's/chr//g' > temp_${NAME}.snpsniffer.calls
+cat temp_${NAME}.snpsniffer.header temp_${NAME}.snpsniffer.calls > ${NAME}.snpsniffer.vcf
 
 # Cleanup directory
-rm temp.snpsniffer.*
+rm temp_${NAME}.snpsniffer.*
