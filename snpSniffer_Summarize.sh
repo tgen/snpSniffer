@@ -23,7 +23,8 @@ fi
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
 SCRIPT_DIR=`dirname ${SCRIPT_PATH}`
 
-SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSnifferV5.jar
+SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSniffer.jar
+
 SNP_SNIFFER_GRAPH=${SCRIPT_DIR}/snpSniffer_Summarize.R
 
 EMPTY_DATABASE=$1

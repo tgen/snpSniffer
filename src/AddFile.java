@@ -1,16 +1,9 @@
 /*
-
-//BEGIN NOTES FOR EDITS MADE 4/10/2019 SF
-This file was edited on 4/10/2019 by Sal Facista. There were originally no comments anywhere in this file.
-Adding comments to line items for readability.
-
-This build requires the java supplement CountLines.class/.java 
+BEGIN NOTES FOR EDITS MADE 2/14/2020
+Due to changes in the way homozygous references are reported with BCFTools 0 -> 0/0 . Changing the addFile Function to expect the new string "0/0" 
+END NOTES FOR EDITS MADE 2/14/2020
 
 Decompiled by Procyon v0.5.34
-
-
-//END NOTES FOR EDITS MADE 4/24/2019 SF
-
 */
 
 import java.io.IOException;
@@ -19,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.FileReader;
 
-public class addFileV6
+public class AddFile
 {
     
     /*
@@ -103,13 +96,14 @@ public class addFileV6
         scanner3.close();
         for (int l = 0; l < ARRAYSIZE; ++l) {
             for (int n3 = 0; n3 < ARRAYSIZE; ++n3) {
-                if (array2[l][0].equals(array[n3][0]) && array[n3][4].equals("0/1")) { //there's an issue on this line of code
+                if (array2[l][0].equals(array[n3][0]) && array[n3][4].equals("0/1")) { 
                     array2[l][length] = array[n3][1].concat(array[n3][2]);
                 }
                 if (array2[l][0].equals(array[n3][0]) && array[n3][4].equals("1/1")) {
                     array2[l][length] = array[n3][2].concat(array[n3][2]);
                 }
-                if (array2[l][0].equals(array[n3][0]) && array[n3][4].equals("0")) {
+                //v7 2/2020 not expects a 0/0 format for 
+                if (array2[l][0].equals(array[n3][0]) && array[n3][4].equals("0/0")) {
                     array2[l][length] = array[n3][1].concat(array[n3][1]);
                 }
             }

@@ -28,11 +28,11 @@ DIR_INSTALL_SNPSNIFFER=$1
 
 #EMPTY_DATABASE=${DIR_INSTALL_SNPSNIFFER}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
 EMPTY_DATABASE=$2
-SNP_SNIFFER_JAR=${DIR_INSTALL_SNPSNIFFER}/snpSnifferV5.jar
+SNP_SNIFFER_JAR=${DIR_INSTALL_SNPSNIFFER}/snpSniffer.jar
 SnpSniffer_Graph_R=${DIR_INSTALL_SNPSNIFFER}/SnpSniffer_Graph.R
 
 #EMPTY_DATABASE=/data/tools/snpSniffer.v5/databaseV5_hg38_ucsc.ini
-#SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSnifferV5.jar
+#SNP_SNIFFER_JAR=/data/tools/snpSniffer.v5/snpSniffer.jar
 #SnpSniffer_Graph_R=/data/jkeats/scripts/SnpSniffer_Graph.R
 
 ## check args
