@@ -26,7 +26,7 @@ SCRIPT_DIR=`dirname ${SCRIPT_PATH}`
 <<<<<<< HEAD
 SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSniffer.jar
 =======
-SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSnifferV5.jar
+SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSniffer.jar
 >>>>>>> 6e1a4882b027357bf82451cad9884aa1efc4df8d
 SNP_SNIFFER_GRAPH=${SCRIPT_DIR}/snpSniffer_Summarize.R
 
