@@ -9,13 +9,6 @@
 #
 #################################
 
-<<<<<<< HEAD
-USER=`whoami`
-
-EMPTY_DATABASE=/home/${USER}/snpSniffer/databaseV5.ini
-SNP_SNIFFER_JAR=/home/${USER}/snpSniffer/snpSniffer.jar
-SnpSniffer_Graph_R=/home/${USER}/snpSniffer/SnpSniffer_Graph.R
-=======
 function usage(){
   echo -e "\n$0 \$DIR_INSTALL_SNPSNIFFER  \$FULL_PATH_TO_EMPTY_DATABASE"
   
