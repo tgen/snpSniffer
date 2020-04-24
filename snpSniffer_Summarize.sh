@@ -56,14 +56,7 @@ find . -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
 # Add genotypes to the database
 for line in `cat Temp_SnpSniffer_Genotype_Paths.txt`
 do
-  #Test code to remove when jar file error is fixed for dealing with homo-ref input to database
-  ##
-  # VCF=`basename ${line}`
-  # awk '{OFS="\t" ; if($10 == "0/0:0") {print $1, $2, $3, $4, $5, $6, $7, $8, $9, "0"} else{print $0}}' ${line} > ${VCF}
-  ##
-  # When corrected update "-add ${VCF}" to "-add ${line}
   java -jar ${SNP_SNIFFER_JAR} -add ${line} SnpSniffer_DB.ini
-  # rm ${VCF}
 done
 
 # Cleanup the temp file
