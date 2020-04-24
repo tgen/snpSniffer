@@ -45,7 +45,7 @@ public class CountLines
    public int showCount()
    {
       int theCount = lineCounter;
-      System.out.println(theCount + " lines detected in reference file.");
+     // System.out.println(theCount + " lines detected in reference file.");
       return theCount;
    }
    
