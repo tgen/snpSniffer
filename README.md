@@ -62,14 +62,14 @@ java -jar snpSniffer.jar -genotype <fullFilePath/reference> <fullFilePath/BAM>
 
 
 2) Generate the genotypes in a vcf format at specific genomic loci:
-    `java -jar ~/local/bin/snpSnifferV5.jar -genotype /lustre/vyellapa/reference.fa /lustre/vyellapa/sample1.bam`
+    `java -jar ~/local/bin/snpSniffer.jar -genotype /lustre/vyellapa/reference.fa /lustre/vyellapa/sample1.bam`
 
 3) Adding the genotypes generated to a flat file "database.ini," provided
     Step 1, will generate a vcf having the same name as the bam in the same directory, this will be added to database.ini with same name:
-    `java -jar ~/local/bin/snpSnifferV5.jar -add /lustre/vyellapa/sample1.vcf /lustre/vyellapa/database.ini`
+    `java -jar ~/local/bin/snpSniffer.jar -add /lustre/vyellapa/sample1.vcf /lustre/vyellapa/database.ini`
 
 4) Compare the genotypes for samples of interest(after 2 or more vcf's are added), examine the snpSniffer output and infer if any mixups occurred:
-    `java -jar ~/local/bin/snpSnifferV5.jar -check sample1 /lustre/vyellapa/database.ini`
+    `java -jar ~/local/bin/snpSniffer.jar -check sample1 /lustre/vyellapa/database.ini`
 
 Note: Users need to reference the correct directory when attempting to run snpSnifferV5.jar . Your version of snpSnifferV5.jar may reside in a different directory than the example above. 
 
