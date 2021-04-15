@@ -1,10 +1,8 @@
 import java.io.IOException;
 
-// 
 // Decompiled by Procyon v0.5.34
-// 
 
-public class GenotypeV6
+public class Genotype
 {
     void Run(final String s, final String s2) throws IOException, InterruptedException {
         try {

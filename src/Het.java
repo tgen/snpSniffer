@@ -2,11 +2,9 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileReader;
 
-// 
 // Decompiled by Procyon v0.5.34
-// 
 
-public class HetV6
+public class Het
 {
     private int i;
     private int j;
@@ -21,7 +19,7 @@ public class HetV6
     String delim;
     String[] tokens;
     
-    public HetV6() {
+    public Het() {
         this.j = 0;
         this.l = 0;
         this.x = 0;

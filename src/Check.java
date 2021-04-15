@@ -1,12 +1,5 @@
 /*
-This build requires the CountLines.class/.java for proper function
-
-Added some notes for readability. Added the CountLines class to extend functionality.
-
 Decompiled by Procyon v0.5.34
-
-End comments 4/24/2019 Salvatore Facista
-
 */
 
 //import java.io.Writer;
@@ -17,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.io.FileReader;
 
-public class CheckV6
+public class Check
 {
     private int i;
     private int j;
@@ -32,7 +25,7 @@ public class CheckV6
     String delim;
     String[] tokens;
     
-    public CheckV6() {
+    public Check() {
         this.j = 0;
         this.l = 0;
         this.x = 0;

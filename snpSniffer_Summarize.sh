@@ -23,7 +23,8 @@ fi
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
 SCRIPT_DIR=`dirname ${SCRIPT_PATH}`
 
-SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSnifferV5.jar
+SNP_SNIFFER_JAR=${SCRIPT_DIR}/snpSniffer.jar
+
 SNP_SNIFFER_GRAPH=${SCRIPT_DIR}/snpSniffer_Summarize.R
 
 EMPTY_DATABASE=$1
@@ -56,14 +57,7 @@ find . -type f -name "*snpSniffer.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*
 # Add genotypes to the database
 for line in `cat Temp_SnpSniffer_Genotype_Paths.txt`
 do
-  #Test code to remove when jar file error is fixed for dealing with homo-ref input to database
-  ##
-  VCF=`basename ${line}`
-  awk '{OFS="\t" ; if($10 == "0/0:0") {print $1, $2, $3, $4, $5, $6, $7, $8, $9, "0"} else{print $0}}' ${line} > ${VCF}
-  ##
-  # When corrected update "-add ${VCF}" to "-add ${line}
-  java -jar ${SNP_SNIFFER_JAR} -add ${VCF} SnpSniffer_DB.ini
-  rm ${VCF}
+  java -jar ${SNP_SNIFFER_JAR} -add ${line} SnpSniffer_DB.ini
 done
 
 # Cleanup the temp file
