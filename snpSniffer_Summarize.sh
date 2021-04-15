@@ -48,9 +48,10 @@ echo "Creating snpSniffer Summary of Current Folder"
 cat ${EMPTY_DATABASE} > SnpSniffer_DB.ini
 
 # Find all the pre-calculated genotype results (search for all expected extensions)
-find . -name "*flt.vcf" > Temp_SnpSniffer_Genotype_Paths.txt
-find . -name "*snpsniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
-find . -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
+# Drop the library level results for simplified viewing
+find . -type f -name "*flt.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*" > Temp_SnpSniffer_Genotype_Paths.txt
+find . -type f -name "*snpsniffer.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*" >> Temp_SnpSniffer_Genotype_Paths.txt
+find . -type f -name "*snpSniffer.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*" >> Temp_SnpSniffer_Genotype_Paths.txt
 
 # Add genotypes to the database
 for line in `cat Temp_SnpSniffer_Genotype_Paths.txt`
