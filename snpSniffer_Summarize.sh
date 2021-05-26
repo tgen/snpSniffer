@@ -76,6 +76,7 @@ then
   find . -type f -name "*snpsniffer.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*" >> Temp_SnpSniffer_Genotype_Paths.txt
   find . -type f -name "*snpSniffer.vcf" ! -name "*[A-Z][0-9][0-9][0-9][0-9][0-9]*" >> Temp_SnpSniffer_Genotype_Paths.txt
 elif [ $FILTER == "No" ]
+then
   find . -type f -name "*flt.vcf" > Temp_SnpSniffer_Genotype_Paths.txt
   find . -type f -name "*snpsniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
   find . -type f -name "*snpSniffer.vcf" >> Temp_SnpSniffer_Genotype_Paths.txt
