@@ -32,7 +32,7 @@ DATABASE=${SCRIPT_DIR}/grch38_hg38_ucsc_contigs/databaseV5_hg38_ucsc.ini
 FILTER=Yes
 
 ## Capture and assign variables from inputs
-while getopts 'd:e:?h' flag
+while getopts 'd:f:?h' flag
 do
     case ${flag} in
         d) DATABASE=${OPTARG};;
