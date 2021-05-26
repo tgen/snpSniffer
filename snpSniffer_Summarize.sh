@@ -17,7 +17,7 @@ usage()
   -h      Display Help
 
   Required Options
-  -d      Input Database File (databaseV5_hg38_ucsc.ini)
+  -d      Input Database File [databaseV5_hg38_ucsc.ini]
   -f      Filter Library Level Results (Yes/No) [Yes]
 
   NOTES:  Default database supports human GRCh38/hg38 coordinates WITHOUT chr prefixes
@@ -35,8 +35,8 @@ FILTER=Yes
 while getopts 'd:e:?h' flag
 do
     case ${flag} in
-        d) VCF=${OPTARG};;
-        f) DATABASE=${OPTARG};;
+        d) DATABASE=${OPTARG};;
+        f) FILTER=${OPTARG};;
         h|?) usage;;
     esac
 done
