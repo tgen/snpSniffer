@@ -6,6 +6,17 @@ This tools was developed by Venkata "Teja" Yellapantulla as part of his PhD thes
 
 This tool is maintained by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Please submit bug reports via Github.
 
+## Easiest way to run [when prerequistes already configured]. 
+Change Dir into the Folder where the Projects are, and run one of the following commands: 
+```
+bash snpSniffer_Summarize.sh 
+  
+* but if you want to get the results at the _Library_ Level:  
+bash snpSniffer_Summarize.sh -f No
+  
+Use 'bash snpSniffer_Summarize.sh --help' for more options
+
+```
 
 ## Usage
 - Move the configuration (.txt "reference" file, .ini "flat" file, and "geno" file) into the same directory as snpSniffer.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths. This will be added to the bugs list.
