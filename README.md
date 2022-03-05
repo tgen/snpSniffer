@@ -6,19 +6,29 @@ This tools was developed by Venkata "Teja" Yellapantulla as part of his PhD thes
 
 This tool is maintained by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Please submit bug reports via Github.
 
-## Easiest way to run [when prerequistes already configured]. 
+## Wrapper Usage - Assumes Genotyping is already Complete 
 Change Dir into the Folder where the Projects are, and run one of the following commands: 
+#### Requirements
+* Precomputed snpSniffer VCF files with expected file extensions ("*flt.vcf", "*snpsniffer.vcf", or "*snpSniffer.vcf")
+* Tools available in your path
+  * Java, Sed, Awk
+  * R with tidyverse and optparse libraries
 ```
-bash snpSniffer_Summarize.sh 
+  Usage: snpSniffer_Summarize.sh [ options ]
+
+  -h      Display Help
+
+  Required Options
+  -d      Input Database File [databaseV5_hg38_ucsc.ini]
+  -f      Filter Library Level Results (Yes/No) [Yes]
+
+  NOTES:  Default database supports human GRCh38/hg38 coordinates WITHOUT chr prefixes 
   
-* but if you want to get the results at the _Library_ Level:  
+# Example if you want to get the results at the _Library_ Level:  
 bash snpSniffer_Summarize.sh -f No
-  
-Use 'bash snpSniffer_Summarize.sh --help' for more options
-
 ```
 
-## Usage
+## Standard Usage
 - Move the configuration (.txt "reference" file, .ini "flat" file, and "geno" file) into the same directory as snpSniffer.jar. Some aspects of snpSniffer are underdeveloped and it will not appropriately handle paths. This will be added to the bugs list.
 
 - To generate a custom .ini file
@@ -96,7 +106,7 @@ sample1 & sample2 count=171.0 match=169.0 ratio=0.9883040935672515
 sample1 & sample3 count=325.0 match=107.0 ratio=0.3292307692307692
 ```
 
-### SnpSniffer Wrapper Usage Notes
+## OLD - DEPRICATED SnpSniffer Wrapper Usage Notes
 
 This package contains a wrapper script that leverages the power of the SnpSniffer JAVA tool to identify sample mix-ups and cross-contaminations
 
@@ -131,7 +141,7 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 		100 and 50 should be considered high confidence
 		20 are often still valuable but can have false positives
 		
-### UPDATE NOTES:
+## UPDATE NOTES:
 
 20200214 - Changed main class name to exclude version number. Added more verbose main method argument error message. Added -version option. Changed the Genotype class to recognize the format "0/0" as a homozygous reference. Previously, "0" was expected for homozygous reference. Renamed internal classes to exclude version number.
 
