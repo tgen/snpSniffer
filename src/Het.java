@@ -72,7 +72,7 @@ public class Het
                 else if (array[this.i][this.j].equals("TA") || array[this.i][this.j].equals("TC") || array[this.i][this.j].equals("TG")) {
                     ++this.het;
                 }
-                else if (array[this.i][this.j].equals("CT") || array[this.i][this.j].equals("CT") || array[this.i][this.j].equals("CG")) {
+                else if (array[this.i][this.j].equals("CA") || array[this.i][this.j].equals("CT") || array[this.i][this.j].equals("CG")) {
                     ++this.het;
                 }
                 else if (array[this.i][this.j].equals("GT") || array[this.i][this.j].equals("GC") || array[this.i][this.j].equals("GA")) {
