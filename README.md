@@ -142,6 +142,7 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 		20 are often still valuable but can have false positives
 		
 ## UPDATE NOTES:
+20240304 - Updated the Het.java class to eliminate a typo causing the tool not to count "CA" hets. This corresponds to this issue: https://github.com/tgen/snpSniffer/issues/19 . The tool was recompiled under a JDK 1.8 (8). The .jar file was updated.
 
 20200214 - Changed main class name to exclude version number. Added more verbose main method argument error message. Added -version option. Changed the Genotype class to recognize the format "0/0" as a homozygous reference. Previously, "0" was expected for homozygous reference. Renamed internal classes to exclude version number.
 
