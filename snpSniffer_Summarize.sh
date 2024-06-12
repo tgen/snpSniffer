@@ -138,7 +138,7 @@ rm snpSniffer_output.txt
 java -jar ${SNP_SNIFFER_JAR} -het SnpSniffer_DB.ini > Temp1_HetRate_Results.txt
 
 # Remove header lines
-awk 'NR>2' Temp1_HetRate_Results.txt \
+awk 'NR>1' Temp1_HetRate_Results.txt \
   | \
   sed 's/.bwa.bam.snpSniffer//g' \
   | \
