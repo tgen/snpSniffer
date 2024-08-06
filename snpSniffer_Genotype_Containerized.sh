@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#SBATCH --job-name="PacBio_HiFi_Alignment"
+#SBATCH --job-name="snpSniffer_Genotype"
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=4G
