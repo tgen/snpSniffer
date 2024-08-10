@@ -106,6 +106,17 @@ sample1 & sample2 count=171.0 match=169.0 ratio=0.9883040935672515
 sample1 & sample3 count=325.0 match=107.0 ratio=0.3292307692307692
 ```
 
+# Setting Thresholds
+There are two primary measurements. 1) Heterozygosity Ratio that can be used to identify cross-contamination. 2) Matching Call Ratio that can be used to identify sample swaps were the genotypes from samples are different or identical unexpectedly
+
+## Heterozygosity Evaluation
+This metric can be used to identify potential cross contamination within a sample.  Be default we deem any sample with a ratio above 0.6 to be contaminated, however mixing experiments have shown low level contamination is detectable below that threshold.
+
+#### Serial Mixing of myeloma cell lines with the lymphoblastoid cell line GM12878
+This shows the mixed heterozygosisty rate of each cell line on the far left when each cell line is at 100% versus the highly reproducible het rate for GM12878 when it is 95% of the sample mass. When the contamination exceeds 10% then the het rate exceeds 0.6, when it is above 5% the het rate exceeds 0.5, suggesting the contamination threshold could be lowered to detect low level contamination
+<img src="/images/CellLine_HetRate.png" width="512" height="512" title="Heterozygosity Ratio in Cell Line Mixtures">
+
+
 ## OLD - DEPRICATED SnpSniffer Wrapper Usage Notes
 
 This package contains a wrapper script that leverages the power of the SnpSniffer JAVA tool to identify sample mix-ups and cross-contaminations
