@@ -114,7 +114,7 @@ This metric can be used to identify potential cross contamination within a sampl
 
 #### Serial Mixing of myeloma cell lines with the lymphoblastoid cell line GM12878
 This shows the mixed heterozygosisty rate of each cell line on the far left when each cell line is at 100% versus the highly reproducible het rate for GM12878 when it is 95% of the sample mass. When the contamination exceeds 10% then the het rate exceeds 0.6, when it is above 5% the het rate exceeds 0.5, suggesting the contamination threshold could be lowered to detect low level contamination
-<img src="/images/CellLine_HetRate.png" width="512" height="512" title="Heterozygosity Ratio in Cell Line Mixtures">
+<img src="/images/CellLine_HetRate.png" width="1000" height="600" title="Heterozygosity Ratio in Cell Line Mixtures">
 
 
 ## OLD - DEPRICATED SnpSniffer Wrapper Usage Notes
