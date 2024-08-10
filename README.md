@@ -107,7 +107,8 @@ sample1 & sample3 count=325.0 match=107.0 ratio=0.3292307692307692
 ```
 
 # Setting Thresholds
-There are two primary measurements. 1) Heterozygosity Ratio that can be used to identify cross-contamination. 2) Matching Call Ratio that can be used to identify sample swaps were the genotypes from samples are different or identical unexpectedly
+There are two primary measurements. 1) Heterozygosity Ratio that can be used to identify cross-contamination. 2) Matching Call Ratio that can be used to identify sample swaps were the genotypes from samples are different or identical unexpectedly.  
+(Work done by Felix Madrid)
 
 ## Heterozygosity Evaluation
 This metric can be used to identify potential cross contamination within a sample.  Be default we deem any sample with a ratio above 0.6 to be contaminated, however mixing experiments have shown low level contamination is detectable below that threshold.
