@@ -121,6 +121,10 @@ The dose response can be influenced when the contaminating samples are from rela
 <img src="/images/HetRate_Parents.png" width="1000" height="600" title="Heterozygosity Ratio in Parent-Child Mixtures">
 <img src="/images/HetRate_Siblings.png" width="1000" height="600" title="Heterozygosity Ratio in Sibling Mixtures">
 
+## Matching Call Evaluation
+When individuals are compared there is a background of shared genotypes but the distibution can vary for unrelated individuals compared to related individuals
+<img src="/images/Match_Ratio_by_Relationship.png" width="1000" height="600" title="Matching Genotype Ratio by Relationship">
+
 ## OLD - DEPRICATED SnpSniffer Wrapper Usage Notes
 
 This package contains a wrapper script that leverages the power of the SnpSniffer JAVA tool to identify sample mix-ups and cross-contaminations
