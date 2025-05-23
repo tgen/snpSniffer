@@ -147,7 +147,7 @@ then
 
   echo "Running in native mode, assumes bcftools is available in the path"
 
-  if [ $UPDATE_STATUS == "Yes"]
+  if [ $UPDATE_STATUS == "Yes" ]
   then
     echo "Generating genotypes and updating contig names"
 
