@@ -76,7 +76,7 @@ then
 
   echo "Running in Singularity containerized mode, assumes singularity is available in the path"
 
-  if [UPDATE_STATUS == "Yes"]
+  if [ $UPDATE_STATUS == "Yes" ]
   then
     echo "Generating genotypes and updating contig names"
 
@@ -106,7 +106,7 @@ then
       --output-type v \
       --output ${OUTPUT_BASENAME}.snpSniffer.vcf
 
-  elif [ UPDATE_STATUS == "No" ]
+  elif [ $UPDATE_STATUS == "No" ]
   then
     echo "Generating genotypes and maintaining contig names in CRAM/BAM/SAM"
 
@@ -144,7 +144,7 @@ then
 
   echo "Running in native mode, assumes bcftools is available in the path"
 
-  if [UPDATE_STATUS == "Yes"]
+  if [ $UPDATE_STATUS == "Yes"]
   then
     echo "Generating genotypes and updating contig names"
 
@@ -170,7 +170,7 @@ then
       --output-type v \
       --output ${OUTPUT_BASENAME}.snpSniffer.vcf
 
-  elif [ UPDATE_STATUS == "No" ]
+  elif [ $UPDATE_STATUS == "No" ]
   then
     echo "Generating genotypes and maintaining contig names in CRAM/BAM/SAM"
 
