@@ -24,8 +24,8 @@ usage()
   NOTES:  Summary step expects single character contig names 1-22, X, Y not chr1,chr2,...,chrY
           update contig names as needed with -u and -a options
 
-          Containerized Workflow only supports Singularity currently. Singularity MUST be available in the $PATH at runtime
-          Non containerized workflow requires bcftools to be available in the $PATH at runtime
+          Containerized Workflow only supports Singularity currently. Singularity MUST be available in the PATH at runtime
+          Non containerized workflow requires bcftools to be available in the PATH at runtime
 
 EOF
 # EOF is found above and hence cat command stops reading. This is equivalent to echo but much neater when printing out.
