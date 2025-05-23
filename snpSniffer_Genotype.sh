@@ -128,6 +128,9 @@ then
       | \
       singularity exec --bind $PWD --pwd $PWD --workdir /scratch/$USER --cleanenv --contain -B /home -B /scratch ${BCFTOOLS_SIF} \
       bcftools sort \
+      | \
+      singularity exec --bind $PWD --pwd $PWD --workdir /scratch/$USER --cleanenv --contain -B /home -B /scratch ${BCFTOOLS_SIF} \
+      bcftools view \
       --include 'INFO/DP >= 5' \
       --output-type v \
       --output ${OUTPUT_BASENAME}.snpSniffer.vcf
@@ -189,6 +192,8 @@ then
       --skip-variants indels \
       | \
       bcftools sort \
+      | \
+      bcftools view \
       --include 'INFO/DP >= 5' \
       --output-type v \
       --output ${OUTPUT_BASENAME}.snpSniffer.vcf
