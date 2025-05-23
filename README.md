@@ -4,15 +4,52 @@ Tool for checking genotype concordance between multiple assays
 
 This tools was developed by Venkata "Teja" Yellapantulla as part of his PhD thesis work in the Keats Lab at Translational Genomics Research Institute.
 
-This tool is maintained by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Please submit bug reports via Github.
+## Workflow
+snpSniffer is designed to compare multiple independent sequencing result files (genomes, exomes, RNAseq) to identify potential 
+sample mixups, unexpected genotype concordance or discordance, and to identify potential cross contamination based on an 
+increase in the percentage of genotyped positions called as heterozygous.
 
-## Wrapper Usage - Assumes Genotyping is already Complete 
-Change Dir into the Folder where the Projects are, and run one of the following commands: 
+### Step 1 - Generate Genotypes
+At TGen this is implemented as dedicated tasks, snpsniffer_geno_{{ task }}, in our automated workflows Tempe 
+(https://github.com/tgen/tempe/blob/main/modules/qc/bam_qc_all.j2) and GrandCanyon 
+(https://github.com/tgen/GrandCanyon/blob/development/modules/qc/bam_qc_all.j2).  
+
+We do provide independent scripts for generating genotypes, 'snpSniffer_Genotype.sh' and 'snpSniffer_Genotype_Slurm_Singularity'. 
+The latter is designed for internal usage at TGen while the former is more generic and allows the user to provide the needed 
+options for their local environment.
+
+```commandline
+  Usage: snpSniffer_Genotype.sh [ options ]
+
+  -h      Display Help
+
+  Required Options
+  -b      Input Alignment file (CRAM, BAM, SAM)
+  -o      Output Name (final output will be .snpSniffer.vcf)
+  -c      Containerized Workflow (No, Singularity, Docker) [No]
+  -r      Reference fasta
+  -s      SNP positions to genotype (grch38_hg38_ucsc_contigs/positions_387_hg38_ucsc.txt)
+  -u      Update Contig Names (Yes,No) [Yes]
+  -a      Contig annotation update file (accessory_files/GRCh38_PrimaryContigs_UCSC_2_Ensembl_CrossMap.txt)
+
+  NOTES:  Summary step expects single character contig names 1-22, X, Y not chr1,chr2,...,chrY
+          update contig names as needed with -u and -a options
+
+          Containerized Workflow only supports Singularity currently. Singularity MUST be available in the $PATH at runtime
+          Non containerized workflow requires bcftools to be available in the $PATH at runtime
+```
+
+### Step 2 - Summarize Genotype and Compare Samples
+The provided wrapper 'snpSniffer_Summarize.sh' assumes genotyping is already complete and files have one of the expected 
+extensions. Navigate to the Folder where the Projects are before initiating to limit the 'find' from screening you entire 
+directory structure.
+
 #### Requirements
 * Precomputed snpSniffer VCF files with expected file extensions ("*flt.vcf", "*snpsniffer.vcf", or "*snpSniffer.vcf")
 * Tools available in your path
   * Java, Sed, Awk
   * R with tidyverse and optparse libraries
+  
 ```
   Usage: snpSniffer_Summarize.sh [ options ]
 
@@ -172,3 +209,6 @@ Samtools (includes BCFtools - do not use outdated stand-alone BCFtools).
 
 20190625 - Fixed "off by one" indexing error in checkV5.java/.class when running without specific sample names. I have uploaded the new files to the src directory. Removed redundant copies of the .jar file and put it in the root directory for the project. I added a lot to documentation. 
 KNOWN ISSUE: snpSniffer geno command may not work if the geno files or subsequent reference files are not in the same directory as the .jar file. This is an artifact of poor scripting. I have no intention to remedy the issue at this time. Users should move the .jar to the same directory as the dependencies, manually process samples through the "geno" script, or move the dependent files to the same directory as the .jar. End update notes 20190625
+
+
+This tool is maintained by Salvatore Facista (TGen - Lab of Dr. William Hendricks) in 2019. The tool will now function with custom .ini files, generated with any number of SNPs. Please submit bug reports via Github.
