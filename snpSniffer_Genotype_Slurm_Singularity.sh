@@ -9,7 +9,7 @@
 # User must provide the CRAM/BAM full, and build Reference FASTA, snpSniffer Sites, and rename
 
 # Usage example
-# sbatch snpSniffer_Genotype_Containerized.sh <CRAM/BAM Full Path> <Output_Basename>
+# sbatch snpSniffer_Genotype_Slurm_Singularity.sh <CRAM/BAM Full Path> <Output_Basename>
 
 INPUT_ALIGNMENT=$1
 OUTPUT_BASENAME=$2
