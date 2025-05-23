@@ -14,7 +14,7 @@ usage()
 
   Required Options
   -b      Input Alignment file (CRAM, BAM, SAM)
-  -o      Output Name (final output will be ${OUTPUT_BASENAME}.snpSniffer.vcf)
+  -o      Output Name (final output will be OUTPUT_BASENAME.snpSniffer.vcf)
   -c      Containerized Workflow (No, Singularity, Docker) [No]
   -r      Reference fasta
   -s      SNP positions to genotype (grch38_hg38_ucsc_contigs/positions_387_hg38_ucsc.txt)

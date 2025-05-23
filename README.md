@@ -14,7 +14,7 @@ At TGen this is implemented as dedicated tasks, snpsniffer_geno_{{ task }}, in o
 (https://github.com/tgen/tempe/blob/main/modules/qc/bam_qc_all.j2) and GrandCanyon 
 (https://github.com/tgen/GrandCanyon/blob/development/modules/qc/bam_qc_all.j2).  
 
-We do provide independent scripts for generating genotypes, 'snpSniffer_Genotype.sh' and 'snpSniffer_Genotype_Slurm_Singularity'. 
+We do provide independent scripts for generating genotypes, `snpSniffer_Genotype.sh` and `snpSniffer_Genotype_Slurm_Singularity.sh`. 
 The latter is designed for internal usage at TGen while the former is more generic and allows the user to provide the needed 
 options for their local environment.
 
@@ -25,7 +25,7 @@ options for their local environment.
 
   Required Options
   -b      Input Alignment file (CRAM, BAM, SAM)
-  -o      Output Name (final output will be .snpSniffer.vcf)
+  -o      Output Name (final output will be OUTPUT_BASENAME.snpSniffer.vcf)
   -c      Containerized Workflow (No, Singularity, Docker) [No]
   -r      Reference fasta
   -s      SNP positions to genotype (grch38_hg38_ucsc_contigs/positions_387_hg38_ucsc.txt)
