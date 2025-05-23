@@ -89,7 +89,7 @@ then
       --min-BQ 13 \
       --fasta-ref ${REFERENCE} \
       --regions-file ${TARGET_SNPS} \
-      ${INPUT_ALIGNMENT} \
+      ${BAM} \
       | \
       singularity exec --bind $PWD --pwd $PWD --workdir /scratch/$USER --cleanenv --contain -B /home -B /scratch ${BCFTOOLS_SIF} \
       bcftools call \
@@ -119,7 +119,7 @@ then
       --min-BQ 13 \
       --fasta-ref ${REFERENCE} \
       --regions-file ${TARGET_SNPS} \
-      ${INPUT_ALIGNMENT} \
+      ${BAM} \
       | \
       singularity exec --bind $PWD --pwd $PWD --workdir /scratch/$USER --cleanenv --contain -B /home -B /scratch ${BCFTOOLS_SIF} \
       bcftools call \
@@ -156,7 +156,7 @@ then
       --min-BQ 13 \
       --fasta-ref ${REFERENCE} \
       --regions-file ${TARGET_SNPS} \
-      ${INPUT_ALIGNMENT} \
+      ${BAM} \
       | \
       bcftools call \
       --consensus-caller \
@@ -182,7 +182,7 @@ then
       --min-BQ 13 \
       --fasta-ref ${REFERENCE} \
       --regions-file ${TARGET_SNPS} \
-      ${INPUT_ALIGNMENT} \
+      ${BAM} \
       | \
       bcftools call \
       --consensus-caller \
