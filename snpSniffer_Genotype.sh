@@ -37,7 +37,7 @@ CONTAINER=No
 UPDATE_STATUS=Yes
 
 ## Capture and assign variables from inputs
-while getopts 'd:f:?h' flag
+while getopts 'b:o:c:r:s:u:a:?h' flag
 do
     case ${flag} in
         b) BAM=${OPTARG};;
